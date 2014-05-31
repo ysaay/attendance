@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.2.0.min.css">
+<script src="js/jquery-1.8.2.min.js"></script>
+<script src="js/jquery.mobile-1.2.0.min.js"></script>
+<script>
+	students = [
+		"Ibo,Jessa",
+		"Cruz,Laiza",
+		"Miguel,Elaine",
+		"Duran,Kasandra",
+		"Merto,Sharon",
+		"Arcala,Charles",
+		"Basada,Pusing",
+		"Gonzaga,Jilian",
+		"Soriano,Charmaine",
+		"Sangalang,Angel",
+		"Lastrolla,Jp",
+		"Rebogio,Jowelito"
+	];
+	
+	$(document).ready(function(){
+		$.each(students, function(i,v){
+			tr = '<tr class="student-student tr-'+ i +'"><td>'+ v +'</td><td><input type="radio" name="'+ i +'" class="present"></td><td><input type="radio" name="'+ i +'" class="absent"></td></tr>';
+			$('#student-list').append(tr);
+		});
+		
+		$('.present').click(function(){
+			id = $(this).attr('name');
+			$('.tr-' + id).removeClass('hide-student');
+			$('.tr-' + id).addClass('show-student');
+		});
+		
+		$('.absent').click(function(){
+			id = $(this).attr('name');
+			$('.tr-' + id).removeClass('show-student');
+			$('.tr-' + id).addClass('hide-student');
+		});
+		
+		$('#show-present').click(function(){
+			$('.student-student').hide();
+			$('.show-student').show();
+			$('.hide-student').hide();
+			
+		});
+		
+		$('#show-absent').click(function(){
+			$('.student-student').hide();
+			$('.hide-student').show();
+			$('.show-student').hide();
+			
+		});
+		
+		$('#show-all').click(function(){
+			$('.student-student').show();
+			$('.hide-student').show();
+			$('.show-student').show();
+			
+		});
+		
+	});
+</script>
+</head>
+<body>
+<div data-role="page" data-theme="e" id="mainPage">
+<div data-role="header">
+<center>
+<h1>ATTENDANCE</h1>
+</center data>
+<div data-role="content">
+<center><img src="bg.JPG" width="300" height="400" /></center data>
+</div>
+	<div data-role="footer" data-position="fixed">
+	<div data-role="navbar">
+	<ul>
+	<li><a href="#pageTwo" data-transition="pop" data-icon="grid" >Student's Record</a></li>
+	</ul>		
+	</div>
+	</div>
+</div>
+</div>
+<!-- Start of Page 2 -->
+<div data-role="page" data-theme="e" id="pageTwo">
+	<div data-role="header">
+		<h1>IT ELECTIVE</h1>
+</div>
+<div data-role="content">
+<table border="1" class="table">
+	<thead>
+		<tr>
+		<th>Students</th>
+		<th>Present</th>
+		<th>Absent</th>
+		</tr>	
+	</thead>
+
+	<tbody id="student-list"></tbody>
+</table>
+
+<div class="row">
+	<div class="col-md-4">
+		<button class="btn btn-primary" id="show-present">Show Present</button>
+	</div>
+	<div class="col-md-4">
+		<button class="btn btn-primary" id="show-absent">Show Absent</button>
+	</div>
+	<div class="col-md-4">
+		<button class="btn btn-primary" id="show-all">Show All</button>
+	</div>
+	<div class="col-md-4">
+		<button class="btn btn-primary" onclick="window.location='index.html'">Back</button>
+	</div>
+</div>
+</div>
+	<div data-role="footer" data-position="fixed">
+		<div data-role="navbar">
+		
+		</div>
+	</div>
+</div>
+</body>
+</html>
